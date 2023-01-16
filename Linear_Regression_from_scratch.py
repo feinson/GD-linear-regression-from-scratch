@@ -100,7 +100,7 @@ class myGDLinearRegression:
 
     @staticmethod
     def iterate_minibatches(X_train, y_train, batch_size, non_stochastic, shuffle=True):  
-        # Saw this on stackexchange and though it was neat. Its gets all the minibatches, and handles the final one nicely.
+        # Saw this on stackexchange and though it was neat. Its gets all the minibatches, and handles the final one nicely
         """
         It takes in the training data, the training labels, the batch size, and a boolean value for
         whether or not you want to use stochastic gradient descent. If you want to use stochastic

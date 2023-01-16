@@ -1,0 +1,4 @@
+# Exercise in implementing a Gradient-Descent Mini-Batch Linear Regression model
+The aim was, as an exercise, to create from scratch (as in numpy only no sklearn) an sklearn style implementation of a linear regression model using gradient descent and mini-batches. The data splitting and standardisation is all handled without sklearn.
+
+The programmes were created from scratch by me as an exercise as I am learning about ML. While I have confidence everything is correct, in order to actually fit a linear model it would of course be best to just use the sklearn built in ```LinearRegression``` class.
