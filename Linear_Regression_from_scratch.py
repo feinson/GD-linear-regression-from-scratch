@@ -1,5 +1,4 @@
 import numpy as np
-from aicore.ml import data
 from split_and_standardise import *
 
 import matplotlib.pyplot as plt
