@@ -68,9 +68,23 @@ class myGDLinearRegression:
         print('Final loss:', all_costs[-1])
         print('Weight values:', self.coef_)
         print('Bias values:', self.intercept_)
+        return self
 
     @staticmethod
     def iterate_minibatches(X_train, y_train, batch_size, non_stochastic, shuffle=True):  # Modified version of something I found on stackexchange. Its a neat way of getting all the minibatches.
+        """
+        It takes in the training data, the training labels, the batch size, and a boolean value for
+        whether or not you want to use stochastic gradient descent. If you want to use stochastic
+        gradient descent, it will return a random batch of the training data and labels. If you don't
+        want to use stochastic gradient descent, it will return the entire training data and labels.
+        
+        :param X_train: The training data
+        :param y_train: The training labels
+        :param batch_size: The number of samples to use in each minibatch
+        :param non_stochastic: If True, then the entire dataset is used for each epoch. If False, then
+        the dataset is split into minibatches
+        :param shuffle: Whether to shuffle the data before each epoch, defaults to True (optional)
+        """
         
         assert X_train.shape[0] == y_train.shape[0]
         if non_stochastic:
@@ -89,6 +103,12 @@ class myGDLinearRegression:
                 yield X_train[excerpt], y_train[excerpt]
 
     def update_parameters(self, weights, bias):
+        """
+        > The function takes in the weights and bias and updates the parameters of the model.
+        
+        :param weights: the weights of the model
+        :param bias: the bias term
+        """
         self.coef_ = weights
         self.intercept_ = bias
 
