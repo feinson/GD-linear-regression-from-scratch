@@ -29,6 +29,17 @@ class myGDLinearRegression:
         self.intercept_ = None
 
     def gradient_descent_step(self, features, predictions, true_labels, learning_rate):
+        """
+        We calculate the errors, then we calculate the derivative of the loss function with respect to
+        the weights and the bias, and then we update the weights and the bias.
+        
+        :param features: The features of the data
+        :param predictions: The predictions of the model on the training data
+        :param true_labels: The true labels of the data
+        :param learning_rate: The learning rate is a hyperparameter that controls how much to change the
+        model in response to the estimated error each time the model weights are updated
+        :return: The new weights and bias
+        """
 
         size = len(predictions)
         difference = predictions - true_labels # Calculating the errors
@@ -42,6 +53,23 @@ class myGDLinearRegression:
     
     
     def fit(self, X_train, y_train, n_epochs=500, learning_rate=0.001/32, batch_size=32, non_stochastic=False):
+        """
+        We iterate over the data set, and for each batch we calculate the gradient of the loss function
+        with respect to the weights and biases, and then we update the weights and biases using the
+        gradient descent step.
+        
+        :param X_train: The training data
+        :param y_train: The target values for the training data
+        :param n_epochs: The number of times we go through the entire training set, defaults to 500
+        (optional)
+        :param learning_rate: The learning rate is a hyperparameter that controls how much to change the
+        model in response to the estimated error each time the model weights are updated
+        :param batch_size: The number of data points to use in each batch, defaults to 32 (optional)
+        :param non_stochastic: If True, then the gradient descent step will be performed on the entire
+        data set. If False, then the gradient descent step will be performed on every one of the random mini-batches of the
+        data set, defaults to False (optional)
+        
+        """
         all_costs =[]
         n_features = X_train.shape[1]  # The number of features is the number of columns in our data set.
 
@@ -71,7 +99,8 @@ class myGDLinearRegression:
         return self
 
     @staticmethod
-    def iterate_minibatches(X_train, y_train, batch_size, non_stochastic, shuffle=True):  # Modified version of something I found on stackexchange. Its a neat way of getting all the minibatches.
+    def iterate_minibatches(X_train, y_train, batch_size, non_stochastic, shuffle=True):  
+        # Saw this on stackexchange and though it was neat. Its gets all the minibatches, and handles the final one nicely.
         """
         It takes in the training data, the training labels, the batch size, and a boolean value for
         whether or not you want to use stochastic gradient descent. If you want to use stochastic
@@ -111,6 +140,7 @@ class myGDLinearRegression:
         """
         self.coef_ = weights
         self.intercept_ = bias
+        return self
 
     def predict(self, X):
         """
